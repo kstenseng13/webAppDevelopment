@@ -1,0 +1,22 @@
+{
+  "name": "jasmine-dragon",
+  "version": "0.0.1",
+  "description": "for web app development",
+  "main": "index.ejs",
+  "scripts": {
+    "start": "node app.js",
+    "devStart": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "Kailee Stenseng",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-ejs-layouts": "^2.5.1",
+    "mongoose": "^8.4.1"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.5",
+    "nodemon": "^3.1.2"
+  }
+}

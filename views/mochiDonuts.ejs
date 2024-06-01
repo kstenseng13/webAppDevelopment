@@ -1,0 +1,66 @@
+<div class="p-10 pb-8 w-48 text-3xl font-semibold backgroundWhiteSmoke w-full">
+    <label class="">Mochi Donuts</label>
+</div>
+<div class="backgroundWhiteSmoke flex flex-wrap justify-center content-start lg:justify-normal">
+    <div class="w-[100%] lg:w-[45%] m-10 mt-0">
+        <div class=" min-w-2xl overflow-hidden rounded-lg bg-white shadow-md">
+            <img class="rounded-t-lg object-cover"
+                src="https://popmenucloud.com/cdn-cgi/image/width%3D1920%2Cheight%3D1920%2Cfit%3Dscale-down%2Cformat%3Dauto%2Cquality%3D60/wzmgkrct/9ac705a1-5c7b-4470-8648-6650826f6824.jpg"
+                alt="[Mochi Donut].(n.d.). KH Bakery mochi donut [Digital image]. Retrieved from URL https://www.khbakery.com/items/mochi-donut" />
+        </div>
+    </div>
+    <div class="mr-10 mb-10 w-[100%] lg:w-[43%]">
+        <div class="in-w-2xl overflow-hidden rounded-lg bg-white shadow-md w-full h-full p-8">
+            <div class="mb-5 w-48 text-2xl font-semibold">
+                <label class="">Bulk Ordering</label>
+            </div>
+            <form>
+                <div class="inline-block mb-5 w-full lg:w-[53%]">
+                    <label for="flavors" class="block mb-2 text-sm font-medium">Flavor</label>
+                    <select id="flavors" class="p-2.5">
+                        <option disabled selected hidden>-Select-</option>
+                    </select>
+                </div>
+                <div class="inline-block mb-5 w-full lg:w-1/5">
+                    <label for="quantity" class="block mb-2 text-sm font-medium">Quantity</label>
+                    <input type="text" id="quantity" class="p-2.5" value="1" />
+                </div>
+                <div class="inline-block mb-5 lg:w-[100px]">
+                    <button type="submit" id="add" onclick="addRow()"
+                        class="text-white shadow-md bg-pink-600 hover:bg-pink-700 focus:ring-4 focus:outline-none focus:ring-pink-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                        Add Item</button>
+                </div>
+            </form>
+            <div class="relative overflow-x-auto">
+                <table class="" id="mochiTable">
+                    <thead class="text-xs text-gray-700 uppercase backgroundGreenTea">
+                        <tr>
+                            <th class="px-6 py-3">
+                                Flavor
+                            </th>
+                            <th class="px-6 py-3">
+                                Quantity
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div class="my-4 w-36">
+                <p class="text-white shadow-md bg-pink-300 focus:ring-4 focus:outline-none 
+                    focus:ring-pink-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" id="fakeButton">Add To
+                    Cart</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <p class="backgroundBlueAir px-8 py-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nunc felis,
+        sagittis semper imperdiet at, vehicula nec augue. In sed lobortis magna. Suspendisse mattis
+        condimentum risus, a euismod tellus ultrices sed. Cras at dui ut eros ullamcorper placerat. Etiam quis
+        condimentum metus. Aliquam nec ante ut lectus aliquet bibendum vel ut
+        dui. Praesent a risus at ligula convallis tristique. Nam aliquam elementum elit.</p>
+</div>
+<div class="backgroundWhiteSmoke h-12"></div>
+<script src="/scripts/mochiDonut.js"></script>
