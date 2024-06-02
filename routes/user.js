@@ -3,10 +3,8 @@ const mongodb = require('mongodb');
 const router = express.Router();
 router.use(express.json());
 
-
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = "mongodb+srv://stoopid:froot69@stoopidcluster.8eyel.mongodb.net/?retryWrites=true&w=majority&appName=StoopidCluster";
-
 const client = new MongoClient(uri, {
     serverApi: {
         version: ServerApiVersion.v1,
@@ -19,9 +17,7 @@ async function connectToMongo() {
     await client.connect();
     const database = client.db('JasmineDragon');
     return result = database.collection('Flavors');
-
 }
-
 
 router.get("/", async (req, res) => {
     try {
@@ -57,7 +53,6 @@ router.post('/', async (req, res) => {
             IsSeasonal: isSeasonal === 'true'
         });
         res.redirect('/user');
-        // res.render('user', { flavors });
     }
     catch (e) {
         res.status(500).send(e.message);
@@ -108,29 +103,5 @@ router.delete('/:id', async (req, res) => {
         client.close();
     }
 });
-
-
-
-// router.post('/', async (req, res) => {
-//     try {
-//         const { name, description, isSeasonal } = req.body;
-//         let collection;
-//         collection = await connectToMongo();
-//         await collection.insertOne({
-//             Name: name,
-//             Description: description,
-//             IsSeasonal: isSeasonal === 'true'
-//         });
-//         res.redirect('/user');
-       
-//         // res.render('user', { flavors });
-//     }
-//     catch (e) {
-//         res.status(500).send(e.message);
-//     }
-//     finally {
-//         client.close();
-//     }
-// })
 
 module.exports = router

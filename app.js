@@ -15,7 +15,6 @@ app.use(express.static('public'));
 app.use(methodOverride("_method"));
 app.use(bodyParser.urlencoded({extended : false}));
 
-//Routes, routes, and more routes
 const indexRouter = require('./routes/index');
 const menuRouter = require("./routes/menu");
 const orderRouter = require("./routes/order");
