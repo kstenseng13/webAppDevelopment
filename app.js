@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 const expressLayouts = require('express-ejs-layouts');
+const methodOverride = require('method-override');
+const bodyParser = require('body-parser');
 
 app.use(express.static("public"));
 app.use(express.urlencoded({extended: true}));
@@ -10,17 +12,8 @@ app.set('views', __dirname + '/views');
 app.set('layout', 'layouts/layout');
 app.use(expressLayouts);
 app.use(express.static('public'));
-
-
-//MongoDB
-const mongoose = require('mongoose');
-mongoose.connect("mongodb+srv://stoopid:froot69@stoopidcluster.8eyel.mongodb.net/", { 
-    useNewUrlParser: true
-});
-const database = mongoose.connection;
-database.on('error', error => console.error(error));
-database.once('open', () => console.log('Connected to Mongoose'));
-
+app.use(methodOverride("_method"));
+app.use(bodyParser.urlencoded({extended : false}));
 
 //Routes, routes, and more routes
 const indexRouter = require('./routes/index');

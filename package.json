@@ -10,9 +10,12 @@
   "keywords": [],
   "author": "Kailee Stenseng",
   "dependencies": {
+    "body-parser": "^1.20.2",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
     "express-ejs-layouts": "^2.5.1",
+    "method-override": "^3.0.0",
+    "mongodb": "^6.7.0",
     "mongoose": "^8.4.1"
   },
   "devDependencies": {

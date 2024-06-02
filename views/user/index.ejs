@@ -1,0 +1,113 @@
+<div class="mx-4  max-w-screen-xl sm:mx-8 xl:mx-auto ">
+  <h1 class="border-b py-6 text-4xl font-semibold">Admin</h1>
+  <div class="grid grid-cols-8 pt-3 pb-10 sm:grid-cols-10">
+    <div class="col-span-2 hidden sm:block">
+      <ul>
+        <li
+          class="mt-5 cursor-pointer border-l-2 border-transparent px-2 py-2 font-semibold transition hover:border-l-pink-700 hover:text-pink-700">
+          Users</li>
+        <li
+          class="mt-5 cursor-pointer border-l-2 border-transparent px-2 py-2 font-semibold transition hover:border-l-pink-700 hover:text-pink-700">
+          Orders</li>
+        <li
+          class="mt-5 cursor-pointer border-l-2 border-transparent px-2 py-2 font-semibold transition hover:border-l-pink-700 hover:text-pink-700">
+          Billing</li>
+        <li
+          class="mt-5 cursor-pointer border-l-2 border-transparent px-2 py-2 font-semibold transition hover:border-l-pink-700 hover:text-pink-700">
+          Reporting and Analytics</li>
+        <li
+          class="mt-5 cursor-pointer border-l-2 border-l-pink-700 px-2 py-2 font-semibold text-pink-700 transition hover:border-l-pink-700 hover:text-pink-700">
+          Product Management</li>
+        <li
+          class="mt-5 cursor-pointer border-l-2 border-transparent px-2 py-2 font-semibold transition hover:border-l-pink-700 hover:text-pink-700">
+          Profile Settings</li>
+        <li
+          class="mt-5 cursor-pointer border-l-2 border-transparent px-2 py-2 font-semibold transition hover:border-l-pink-700 hover:text-pink-700">
+          Backup and Restore</li>
+      </ul>
+    </div>
+    <div class="col-span-8 rounded-xl bg-white md:px-8 sm:shadow">
+      <div class="pt-4">
+        <h1 class="py-2 text-2xl font-semibold">Product Management</h1>
+      </div>
+      <hr class="mt-4 mb-8" />
+      <!-- Form to add a new flavor -->
+      <form  action="/user" method="POST" class="mb-10 flex flex-col flex-wrap justify-center" id="addFlavorForm">
+        <div class="flex flex-col pb-4 px-4 lg:px-0">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required
+            class="w-full rounded-md border bg-white py-2 px-2 outline-none ring-pink-600 focus:ring-1">
+        </div>
+        <div class="flex flex-col pb-4 px-4 lg:px-0">
+          <label for="description">Description</label>
+          <input type="text" id="description" name="description" required
+            class="w-full rounded-md border bg-white py-2 px-2 outline-none ring-pink-600 focus:ring-1">
+        </div>
+        <div class="flex flex-col pb-4 px-4 lg:px-0">
+          <label for="isSeasonal">Is Seasonal</label>
+          <select id="isSeasonal" name="isSeasonal" required
+            class="w-full rounded-md border bg-white py-2 px-2 outline-none ring-pink-600 focus:ring-1">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
+        </div>
+        <div class="flex flex-col pb-4">
+          <button type="submit"
+            class="max-w-[110px] text-white shadow-md bg-pink-600 hover:bg-pink-700 focus:ring-4 focus:outline-none focus:ring-pink-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+            <span class="w-full"> Add Flavor </span>
+          </button>
+        </div>
+      </form>
+
+      <div class="amx-auto mb-10 overflow-hidden rounded-lg border bg-white">
+        <table class="w-full">
+          <thead>
+            <tr class="text-center font-semibold">
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Is Seasonal</th>
+              <th>Actions</th>
+            </tr>
+            </tr>
+          </thead>
+          <tbody>
+            <% flavors.forEach(flavor => { %>
+              <tr>
+                <td class="border-b py-2 text-center text-sm">
+                  <%= flavor.Name %>
+                </td>
+                <td class="border-b py-2 text-center text-sm">
+                  <%= flavor.Description %>
+                </td>
+                <td class="border-b py-2 text-center text-sm">
+                  <%= flavor.IsSeasonal ? 'Yes' : 'No' %>
+                </td>
+                <td class="border-b py-2 text-center text-sm">
+                  <form action="/user/<%= flavor._id %>?_method=PUT" method="POST">
+                    <input type="text" name="name" value="<%= flavor.Name %>" required>
+                    <input type="text" name="description" value="<%= flavor.Description %>" required>
+                    <select name="isSeasonal" required>
+                      <option value="true" <%=flavor.IsSeasonal ? 'selected' : '' %>>Yes</option>
+                      <option value="false" <%=!flavor.IsSeasonal ? 'selected' : '' %>>No</option>
+                    </select>
+                    <button type="submit">Update</button>
+                    <button class="ml-auto flex text-sm font-semibold text-pink-600 underline decoration-2"
+                      type="change">Change</button>
+                  </form>
+
+                  <!-- Form to delete a flavor -->
+                  <form action="/user/<%= flavor._id %>?_method=DELETE" method="POST" id="deleteItem">
+                    <button class="ml-auto flex text-sm font-semibold text-pink-600 underline decoration-2"
+                      type="submit">Delete</button>
+                  </form>
+                </td>
+              </tr>
+              <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/scripts/productManagement.js"></script>
